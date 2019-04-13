@@ -21,6 +21,24 @@ TEST(Conversao, TesteNumerosSimples) {
     EXPECT_EQ(converteNumeroRomano(numero_r_mil), 1000);
 }
 
+TEST(Conversao, TesteNumerosCompostos) {
+    char numero_r_dois[]                = "II";
+    char numero_r_quatro[]              = "IV";
+    char numero_r_seis[]                = "VI";
+    char numero_r_sessenta_tres[]       = "LXIII";
+    char numero_r_cento_quarenta_nove[] = "XLIII";
+    char numero_r_quinhentos_vinte[]    = "DXX";
+    char numero_r_dois_mil_trezentos[]  = "MMCCC";
+
+    EXPECT_EQ(converteNumeroRomano(numero_r_dois), 2);
+    EXPECT_EQ(converteNumeroRomano(numero_r_quatro), 4);
+    EXPECT_EQ(converteNumeroRomano(numero_r_seis), 6);
+    EXPECT_EQ(converteNumeroRomano(numero_r_sessenta_tres), 63);
+    EXPECT_EQ(converteNumeroRomano(numero_r_cento_quarenta_nove), 149);
+    EXPECT_EQ(converteNumeroRomano(numero_r_quinhentos_vinte), 520);
+    EXPECT_EQ(converteNumeroRomano(numero_r_dois_mil_trezentos), 2300);
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
