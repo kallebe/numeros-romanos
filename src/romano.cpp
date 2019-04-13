@@ -3,34 +3,58 @@
 int converteNumeroRomano(char numero_romano[]) {
     int num = 0, i = 0;
 
-    while (numero_romano[i] != '\n') {
+    while (numero_romano[i] != '\0') {
         switch (numero_romano[i]) {
             case 'I':
-                return 1;
+                if (numero_romano[i+1] != '\0' && numero_romano[i+1] != 'I')
+                    num -= 1;
+                else
+                    num += 1;
                 break;
             case 'V':
-                return 5;
+                if (numero_romano[i+1] != '\0' && numero_romano[i+1] == 'I')
+                    num += 5;
+                else if (numero_romano[i+1] != '\0' && numero_romano[i+1] != 'V')
+                    num -= 5;
+                else
+                    num += 5;
                 break;
             case 'X':
-                return 10;
+                if (numero_romano[i+1] != '\0' && (numero_romano[i+1] == 'I' || numero_romano[i+1] == 'V'))
+                    num += 10;
+                else if (numero_romano[i+1] != '\0' && numero_romano[i+1] != 'X')
+                    num -= 10;
+                else
+                    num += 10;
                 break;
             case 'L':
-                return 50;
+                if (numero_romano[i+1] != '\0' && (numero_romano[i+1] == 'I' || numero_romano[i+1] == 'V' || numero_romano[i+1] == 'X'))
+                    num += 50;
+                else if (numero_romano[i+1] != '\0' && numero_romano[i+1] != 'L')
+                    num -= 50;
+                else
+                    num += 50;
                 break;
             case 'C':
-                return 100;
+                if (numero_romano[i+1] != '\0' && (numero_romano[i+1] == 'D' || numero_romano[i+1] == 'M'))
+                    num -= 100;
+                else
+                    num += 100;
                 break;
             case 'D':
-                return 500;
+                if (numero_romano[i+1] != '\0' && (numero_romano[i+1] == 'M'))
+                    num -= 500;
+                else
+                    num += 500;
                 break;
             case 'M':
-                return 1000;
+                num += 1000;
                 break;
             default:
-                return -1;
                 break;
         }
+        i++;
     }
 
-    return 0;
+    return num;
 }

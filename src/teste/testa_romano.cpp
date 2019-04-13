@@ -26,7 +26,7 @@ TEST(Conversao, TesteNumerosCompostos) {
     char numero_r_quatro[]              = "IV";
     char numero_r_seis[]                = "VI";
     char numero_r_sessenta_tres[]       = "LXIII";
-    char numero_r_cento_quarenta_nove[] = "XLIII";
+    char numero_r_cento_quarenta_nove[] = "CXLIX";
     char numero_r_quinhentos_vinte[]    = "DXX";
     char numero_r_dois_mil_trezentos[]  = "MMCCC";
 

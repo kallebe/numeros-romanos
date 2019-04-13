@@ -19,6 +19,8 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
+all: romano testa_romano
+
 romano: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
