@@ -3,3 +3,5 @@
 #ingorar os executaveis gerados
 romano
 testa_romano
+#ignora pasta objetos
+src/obj/
