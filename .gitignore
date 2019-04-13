@@ -1,0 +1,5 @@
+#ingnorar pdfs
+*.pdf
+#ingorar os executaveis gerados
+romano
+testa_romano
