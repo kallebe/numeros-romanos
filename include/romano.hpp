@@ -3,6 +3,7 @@
 #ifndef INCLUDE_ROMANO_HPP_
 #define INCLUDE_ROMANO_HPP_
 
-int converteNumeroRomano(char numero_romano[]);
+int converteNumeroRomano(char num_romano[]);
+int converteAlgarismo(char num_romano);
 
 #endif  // INCLUDE_ROMANO_HPP_
