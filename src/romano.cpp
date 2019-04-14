@@ -3,14 +3,28 @@
 #include "romano.hpp"
 
 int converteNumeroRomano(char num_romano[]) {
-    int num = 0, i = 0, num_atual = 0;
+    int num = 0, i = 0, num_atual, prox_num, cont_rep = 1;
 
     while (num_romano[i] != '\0') {
         num_atual = converteAlgarismo(num_romano[i]);
+        prox_num = converteAlgarismo(num_romano[i+1]);
 
-        if (converteAlgarismo(num_romano[i+1]) > num_atual)
-            num -= num_atual;
+        if (num_atual == prox_num)
+            cont_rep++;
         else
+            cont_rep = 1;
+
+        if ((num_atual == 5 || num_atual == 50 || num_atual == 500) && cont_rep == 2)
+            return -1;
+
+        if (cont_rep > 3)
+            return -1;
+
+        if (prox_num > num_atual) {
+            if (prox_num - num_atual == 5 || prox_num - num_atual == 50 || prox_num - num_atual == 500)
+                return -1;
+            num -= num_atual;
+        } else
             num += num_atual;
         i++;
     }
