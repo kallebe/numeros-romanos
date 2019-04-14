@@ -10,13 +10,13 @@ int converteNumeroRomano(char num_romano[]) {
         prox_num = converteAlgarismo(num_romano[i+1]);
 
         if (prox_num > num_atual) {
-            if (prox_num == 2*num_atual)    // Casos como: VX, LC, DM
+            if (prox_num == 2*num_atual || cont_rep > 1)  // Ex: VX e IIC
                 return -1;
             num -= num_atual;
             cont_rep = 1;
         } else {
             if (prox_num == num_atual) {
-                switch (num_atual) {        // Casos como: VV, LL, DD
+                switch (num_atual) {        // Ex: VV, LL, DD
                     case 5:
                     case 50:
                     case 500:
