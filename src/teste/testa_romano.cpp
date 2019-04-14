@@ -45,6 +45,25 @@ TEST(Conversao, TesteNumerosCompostos) {
     EXPECT_EQ(converteNumeroRomano(num_r_dois_mil_novc_setenta_nove), 2979);
 }
 
+TEST(Conversao, TesteExcecoes) {
+    int i, tam = 10;
+    char excecao[31][tam];
+    snprintf(excecao[0], sizeof(excecao[0]), "XXXX");
+    snprintf(excecao[1], sizeof(excecao[0]), "VV");
+    snprintf(excecao[2], sizeof(excecao[0]), "VX");
+    snprintf(excecao[3], sizeof(excecao[0]), "IIII");
+    snprintf(excecao[4], sizeof(excecao[0]), "LL");
+    snprintf(excecao[5], sizeof(excecao[0]), "DD");
+    snprintf(excecao[6], sizeof(excecao[0]), "VVI");
+    snprintf(excecao[7], sizeof(excecao[0]), "DLLXII");
+    snprintf(excecao[8], sizeof(excecao[0]), "LC");
+    snprintf(excecao[9], sizeof(excecao[0]), "CLCX");
+
+    for (i = 0; i < tam; i++) {
+        EXPECT_EQ(converteNumeroRomano(excecao[i]), -1);
+    }
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
