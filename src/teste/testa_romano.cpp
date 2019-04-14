@@ -46,7 +46,7 @@ TEST(Conversao, TesteNumerosCompostos) {
 }
 
 TEST(Conversao, TesteExcecoes) {
-    int i, tam = 12;
+    int i, tam = 16;
     char excecao[31][tam];
     snprintf(excecao[0], sizeof(excecao[0]), "XXXX");
     snprintf(excecao[1], sizeof(excecao[0]), "VV");
@@ -60,6 +60,10 @@ TEST(Conversao, TesteExcecoes) {
     snprintf(excecao[9], sizeof(excecao[0]), "CLCX");
     snprintf(excecao[10], sizeof(excecao[0]), "CCD");
     snprintf(excecao[11], sizeof(excecao[0]), "IIC");
+    snprintf(excecao[12], sizeof(excecao[0]), "XIXC");
+    snprintf(excecao[13], sizeof(excecao[0]), "XIXX");
+    snprintf(excecao[14], sizeof(excecao[0]), "XIXI");
+    snprintf(excecao[15], sizeof(excecao[0]), "K");
 
     for (i = 0; i < tam; i++) {
         EXPECT_EQ(converteNumeroRomano(excecao[i]), -1);
