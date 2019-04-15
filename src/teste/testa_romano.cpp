@@ -70,6 +70,16 @@ TEST(Conversao, TesteExcecoes) {
     }
 }
 
+TEST(Conversao, TesteMinusculas) {
+    char num_r_seis[]           = "vi";
+    char num_r_trinta[]         = "xxx";
+    char num_r_sessenta_tres[]  = "lxiii";
+
+    EXPECT_EQ(converteNumeroRomano(num_r_seis), 6);
+    EXPECT_EQ(converteNumeroRomano(num_r_trinta), 30);
+    EXPECT_EQ(converteNumeroRomano(num_r_sessenta_tres), 63);
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
