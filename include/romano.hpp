@@ -5,5 +5,6 @@
 
 int converteNumeroRomano(char num_romano[]);
 int converteAlgarismo(char num_romano);
+int restanteDaString(char string[], char restante[], int pos);
 
 #endif  // INCLUDE_ROMANO_HPP_

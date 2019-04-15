@@ -1,6 +1,7 @@
 // Copyright (c) 2019 Kallebe de Sousa Silva. All rights reserved.
 
 #include "romano.hpp"
+#include <string.h>
 
 int converteNumeroRomano(char num_romano[]) {
     int num = 0, i = 0, num_atual, prox_num, cont_rep = 1;
@@ -9,8 +10,15 @@ int converteNumeroRomano(char num_romano[]) {
         num_atual = converteAlgarismo(num_romano[i]);
         prox_num = converteAlgarismo(num_romano[i+1]);
 
+        if (num_atual == -1)
+            return -1;
+
         if (prox_num > num_atual) {
+            char restante[30];
+            restanteDaString(num_romano, restante, i+1);
             if (prox_num == 2*num_atual || cont_rep > 1)  // Ex: VX e IIC
+                return -1;
+            if (converteNumeroRomano(restante) > num && strlen(restante) > 1)
                 return -1;
             num -= num_atual;
             cont_rep = 1;
@@ -54,7 +62,19 @@ int converteAlgarismo(char num_romano) {
             return 500;
         case 'M':
             return 1000;
-        default:    // Caso seja '\0' retornará 0
+        case '\0':    // Caso seja '\0' retornará 0
             return 0;
+        default:
+            return -1;
     }
+}
+
+int restanteDaString(char string[], char restante[], int pos) {
+    int i = 0;
+
+    do {
+        restante[i] = string[i+pos];
+        i++;
+    } while (string[i+pos-1] != '\0');
+    return 1;
 }
