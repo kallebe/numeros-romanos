@@ -1,1 +1,3 @@
-#numeros romanos
+Para compilar o programa, entre no diretório src/ e digite no terminal o comando "make" (sem as aspas)
+Para a execução, basta digitar o comando: ./romano e digitar o número romano em seguida
+Para a execução dos testes, basta digitar o comando: ./testa_romano
