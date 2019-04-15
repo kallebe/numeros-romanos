@@ -14,11 +14,11 @@ int converteNumeroRomano(char num_romano[]) {
             return -1;
 
         if (prox_num > num_atual) {
-            char restante[30];
-            restanteDaString(num_romano, restante, i+1);
+            char substring[30];
+            subString(num_romano, substring, i+1);
             if (prox_num == 2*num_atual || cont_rep > 1)  // Ex: VX e IIC
                 return -1;
-            if (converteNumeroRomano(restante) > num && strlen(restante) > 1)
+            if (converteNumeroRomano(substring) > num && strlen(substring) > 1)
                 return -1;
             num -= num_atual;
             cont_rep = 1;
@@ -62,18 +62,18 @@ int converteAlgarismo(char num_romano) {
             return 500;
         case 'M':
             return 1000;
-        case '\0':    // Caso seja '\0' retornará 0
+        case '\0':      // Caso seja '\0' retornará 0
             return 0;
-        default:
+        default:        // Demais caracteres
             return -1;
     }
 }
 
-int restanteDaString(char string[], char restante[], int pos) {
+int subString(char string[], char substring[], int pos) {
     int i = 0;
 
     do {
-        restante[i] = string[i+pos];
+        substring[i] = string[i+pos];
         i++;
     } while (string[i+pos-1] != '\0');
     return 1;

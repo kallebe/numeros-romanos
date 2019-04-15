@@ -3,8 +3,11 @@
 #ifndef INCLUDE_ROMANO_HPP_
 #define INCLUDE_ROMANO_HPP_
 
+#include <string>
+
 int converteNumeroRomano(char num_romano[]);
 int converteAlgarismo(char num_romano);
-int restanteDaString(char string[], char restante[], int pos);
+// retorna substring a partir da posição dada
+int subString(char string[], char substring[], int pos);
 
 #endif  // INCLUDE_ROMANO_HPP_
