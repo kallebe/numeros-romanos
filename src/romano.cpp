@@ -2,6 +2,7 @@
 
 #include "romano.hpp"
 #include <string.h>
+#include <ctype.h>
 
 int converteNumeroRomano(char num_romano[]) {
     int num = 0, i = 0, num_atual, prox_num, cont_rep = 1;
@@ -47,7 +48,7 @@ int converteNumeroRomano(char num_romano[]) {
 }
 
 int converteAlgarismo(char num_romano) {
-    switch (num_romano) {
+    switch (toupper(num_romano)) {
         case 'I':
             return 1;
         case 'V':
