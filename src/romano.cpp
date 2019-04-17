@@ -14,12 +14,23 @@ int converteNumeroRomano(char num_romano[]) {
         if (num_atual == -1)
             return -1;
 
-        if (prox_num > num_atual) {
-            char substring[30];
-            subString(num_romano, substring, i+1);
-            if (prox_num == 2*num_atual || cont_rep > 1)  // Ex: VX e IIC
+        if (num_romano[i+1] != '\0' && num_romano[i+2] != '\0' && prox_num != num_atual) {
+            if (num_atual == converteAlgarismo(num_romano[i+2])) {
+                switch (num_atual) {
+                    case 10:
+                    case 100:
+                    case 1000:
+                        break;
+                    default:
+                        return -1;
+                }
+            }
+            if (converteAlgarismo(num_romano[i+2]) > num_atual)
                 return -1;
-            if (converteNumeroRomano(substring) > num && strlen(substring) > 1)
+        }
+
+        if (prox_num > num_atual) {
+            if (prox_num == 2*num_atual || prox_num > 10*num_atual || cont_rep > 1)
                 return -1;
             num -= num_atual;
             cont_rep = 1;
@@ -68,14 +79,4 @@ int converteAlgarismo(char num_romano) {
         default:        // Demais caracteres
             return -1;
     }
-}
-
-int subString(char string[], char substring[], int pos) {
-    int i = 0;
-
-    do {
-        substring[i] = string[i+pos];
-        i++;
-    } while (string[i+pos-1] != '\0');
-    return 1;
 }
