@@ -64,6 +64,8 @@ TEST(Conversao, TesteExcecoes) {
     snprintf(excecao[13], sizeof(excecao[0]), "XIXX");
     snprintf(excecao[14], sizeof(excecao[0]), "XIXI");
     snprintf(excecao[15], sizeof(excecao[0]), "K");
+    snprintf(excecao[15], sizeof(excecao[0]), "VIV");
+    snprintf(excecao[15], sizeof(excecao[0]), "IL");
 
     for (i = 0; i < tam; i++) {
         EXPECT_EQ(converteNumeroRomano(excecao[i]), -1);
