@@ -14,7 +14,8 @@ int converteNumeroRomano(char num_romano[]) {
         if (num_atual == -1)
             return -1;
 
-        if (num_romano[i+1] != '\0' && num_romano[i+2] != '\0' && prox_num != num_atual) {
+        // Exceção para casos como VIV, LXL
+        if (prox_num != 0 && num_romano[i+2] != '\0' && prox_num != num_atual) {
             if (num_atual == converteAlgarismo(num_romano[i+2])) {
                 switch (num_atual) {
                     case 10:
@@ -30,7 +31,9 @@ int converteNumeroRomano(char num_romano[]) {
         }
 
         if (prox_num > num_atual) {
-            if (prox_num == 2*num_atual || prox_num > 10*num_atual || cont_rep > 1)
+            if (prox_num == 2*num_atual || cont_rep > 1)
+                return -1;
+            if (prox_num > 10*num_atual)
                 return -1;
             num -= num_atual;
             cont_rep = 1;
